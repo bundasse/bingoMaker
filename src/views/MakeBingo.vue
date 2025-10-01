@@ -43,11 +43,11 @@ import { ref } from 'vue';
 .bingoCell{
   flex-grow: 1;
   height: 50px;
-align-items: stretch;
-background-color: none;
-border: 1px solid steelblue;
-border-radius: 8px;
-padding: 8px 0;
+  align-items: stretch;
+  background-color: none;
+  border: 1px solid steelblue;
+  border-radius: 8px;
+  padding: 8px 0;
 }
 .bingoInput{
   background: none;
