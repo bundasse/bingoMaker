@@ -1,5 +1,6 @@
 # bingoMaker
 
+취향, 관심사등의 빙고를 생성하고 얼마나 일치하는지 체크할 수 있는 사이트입니다
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
