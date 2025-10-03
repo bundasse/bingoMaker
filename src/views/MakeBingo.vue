@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
   const bingoSize =ref(3)
+
 </script>
 <template>
   <div>
@@ -12,11 +13,9 @@ import { ref } from 'vue';
         <option :value="5">5×5</option>
       </select>
     </div>
-    <div class="bingoArea">
-      <div v-for="col in bingoSize" :key="col" class="bingoCol">
-        <div class="bingoCell" v-for="row in bingoSize" :key="row">
-          <input type="text" name="" id="" class="bingoInput">
-        </div>
+    <div class="bingoArea" :style="`grid-template-rows: repeat(${bingoSize}, 1fr); grid-template-columns: repeat(${bingoSize}, 1fr);`">
+      <div class="bingoCell" v-for="row in Math.pow(bingoSize,2)" :key="row">
+        <input type="text" class="bingoInput">
       </div>
     </div>
   </div>
@@ -31,28 +30,24 @@ import { ref } from 'vue';
   }
 }
 .bingoArea{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.bingoCol{
-  display: flex;
+  width: 600px;
+  height: 600px;
+  border:1px solid red;
+  display: grid;
   gap: 8px;
 }
 .bingoCell{
-  flex-grow: 1;
-  height: 50px;
   align-items: stretch;
   background-color: none;
   border: 1px solid steelblue;
-  border-radius: 8px;
-  padding: 8px 0;
+  border-radius: 20px;
+  padding: 20px 0;
 }
 .bingoInput{
   background: none;
   outline: none;
-  border: 0;
+  border: 1px solid transparent;
+  font-size: 2rem;
   padding: 4px;
   border-radius: 4px;
 }
