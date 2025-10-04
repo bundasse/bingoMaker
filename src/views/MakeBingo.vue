@@ -1,6 +1,19 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
   const bingoSize =ref(3)
+  const bingoInputBox =ref()
+  const bingoWidth = computed(() => {
+    return (600 - 4*(bingoSize.value-1))/bingoSize.value
+  })
+
+  function changeTextHeight(idx) {
+    let sh = bingoInputBox.value[idx].scrollHeight;
+    if(bingoInputBox.value[idx].value == ''|| bingoInputBox.value[idx].value.length < 6){
+      sh = 26;
+    }
+    bingoInputBox.value[idx].style.height = 'auto';
+    bingoInputBox.value[idx].style.height = sh+'px';
+  }
 
 </script>
 <template>
@@ -13,9 +26,9 @@ import { ref } from 'vue';
         <option :value="5">5×5</option>
       </select>
     </div>
-    <div class="bingoArea" :style="`grid-template-rows: repeat(${bingoSize}, 1fr); grid-template-columns: repeat(${bingoSize}, 1fr);`">
-      <div class="bingoCell" v-for="row in Math.pow(bingoSize,2)" :key="row">
-        <input type="text" class="bingoInput">
+    <div class="bingoArea" :style="`grid: repeat(${bingoSize}, 1fr) / repeat(${bingoSize}, 1fr);`">
+      <div class="bingoCell" :style="`width: ${bingoWidth}px; height: ${bingoWidth}px;`" v-for="row in Math.pow(bingoSize,2)" :key="row">
+        <textarea :style="`width: ${bingoWidth-3}px;`" ref="bingoInputBox" rows="1" class="bingoInput" @keyup="changeTextHeight(row-1)"></textarea>
       </div>
     </div>
   </div>
@@ -32,24 +45,25 @@ import { ref } from 'vue';
 .bingoArea{
   width: 600px;
   height: 600px;
-  border:1px solid red;
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 .bingoCell{
   align-items: stretch;
+  display: flex;
+  align-items: center;
   background-color: none;
   border: 1px solid steelblue;
-  border-radius: 20px;
-  padding: 20px 0;
+  border-radius: 12px;
+  padding: 12px 0;
 }
 .bingoInput{
   background: none;
   outline: none;
   border: 1px solid transparent;
-  font-size: 2rem;
-  padding: 4px;
-  border-radius: 4px;
+  font-size: 1.2rem;
+  resize: none;
+  overflow: hidden;
 }
 .bingoInput:focus{
   border: 1px solid lightblue;
