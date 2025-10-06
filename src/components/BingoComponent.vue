@@ -31,10 +31,11 @@ import { ref, computed } from 'vue';
   align-items: center;
   background-color: none;
   border: 1px solid steelblue;
-  border-radius: 12px;
-  padding: 12px 0;
+  border-radius: 16px;
+  padding: 16px 0;
 }
 .bingoText{
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-family: 'Escoredream';
 }
 </style>

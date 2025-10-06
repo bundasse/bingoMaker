@@ -9,7 +9,7 @@ import { computed, ref } from 'vue';
   function changeTextHeight(idx) {
     let sh = bingoInputBox.value[idx].scrollHeight;
     if(bingoInputBox.value[idx].value == ''|| bingoInputBox.value[idx].value.length < 6){
-      sh = 26;
+      sh = 37;
     }
     bingoInputBox.value[idx].style.height = 'auto';
     bingoInputBox.value[idx].style.height = sh+'px';
@@ -54,18 +54,17 @@ import { computed, ref } from 'vue';
   align-items: center;
   background-color: none;
   border: 1px solid steelblue;
-  border-radius: 12px;
-  padding: 12px 0;
+  border-radius: 16px;
+  padding: 16px 0;
 }
 .bingoInput{
   background: none;
   outline: none;
   border: 1px solid transparent;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-family: 'Escoredream';
+  text-align: center;
   resize: none;
   overflow: hidden;
-}
-.bingoInput:focus{
-  border: 1px solid lightblue;
 }
 </style>
