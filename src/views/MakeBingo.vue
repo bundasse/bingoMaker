@@ -20,7 +20,7 @@ import { computed, ref } from 'vue';
   <div>
     <div>
       빙고 크기
-      <select name="size" id="size" v-model="bingoSize">
+      <select class="bingoSizeCombo" name="size" id="size" v-model="bingoSize">
         <option :value="3">3×3</option>
         <option :value="4">4×4</option>
         <option :value="5">5×5</option>
@@ -41,6 +41,11 @@ import { computed, ref } from 'vue';
     display: flex;
     align-items: center;
   }
+}
+.bingoSizeCombo{
+  border:1px solid steelblue;
+  border-radius: 4px;
+  padding: 2px 4px;
 }
 .bingoArea{
   width: 600px;
