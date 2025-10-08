@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import NavBar from '@/components/NavBar.vue';
 </script>
 
@@ -8,8 +8,6 @@ import NavBar from '@/components/NavBar.vue';
     <div class="wrapper">
       <nav>
         <NavBar />
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/make">빙고 만들기</RouterLink>
       </nav>
     </div>
   </header>
