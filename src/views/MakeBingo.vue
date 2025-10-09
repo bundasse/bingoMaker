@@ -18,13 +18,28 @@ import { computed, ref } from 'vue';
 </script>
 <template>
   <div>
-    <div>
-      빙고 크기
-      <select class="bingoSizeCombo" name="size" id="size" v-model="bingoSize">
-        <option :value="3">3×3</option>
-        <option :value="4">4×4</option>
-        <option :value="5">5×5</option>
-      </select>
+    <div class="bingoSetting d-flex">
+      <div class="bingoTitle d-flex">
+        <label for="title">
+          빙고 제목
+        </label>
+        <input type="text" name="" id="title">
+      </div>
+      <div class="bingoSize d-flex">
+        <label for="size">
+          빙고 크기
+        </label>
+        
+        <select class="bingoSizeCombo" name="size" id="size" v-model="bingoSize">
+          <option :value="3">3×3</option>
+          <option :value="4">4×4</option>
+          <option :value="5">5×5</option>
+        </select>
+      </div>
+      <!-- <div class="bingoTag d-flex">
+        <label for="tag">태그</label>
+        <input type="text">
+      </div> -->
     </div>
     <div class="bingoArea" :style="`grid: repeat(${bingoSize}, 1fr) / repeat(${bingoSize}, 1fr);`">
       <div class="bingoCell" :style="`width: ${bingoWidth}px; height: ${bingoWidth}px;`" v-for="row in Math.pow(bingoSize,2)" :key="row">
@@ -35,13 +50,21 @@ import { computed, ref } from 'vue';
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.bingoSetting{
+  font-size: 1.2rem;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
 }
+.bingoSetting label{
+  width: 100px;
+}
+.bingoSetting input[type=text]{
+  border: 1px solid steelblue;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
 .bingoSizeCombo{
   border:1px solid steelblue;
   border-radius: 4px;
