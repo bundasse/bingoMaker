@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
   const bingoSize =ref(3)
+  const bingoTitle = ref('')
   const bingoInputBox =ref()
   const bingoWidth = computed(() => {
     return (600 - 4*(bingoSize.value-1))/bingoSize.value
@@ -23,7 +24,7 @@ import { computed, ref } from 'vue';
         <label for="title">
           빙고 제목
         </label>
-        <input type="text" name="" id="title">
+        <input type="text" name="" id="title" v-model="bingoTitle">
       </div>
       <div class="bingoSize d-flex">
         <label for="size">
