@@ -22,10 +22,9 @@ onMounted(() => {
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/make">빙고 만들기</RouterLink>
         </div>
-        <div class="searchBox d-flex">
-            <input type="text" placeholder="키워드 또는 빙고아이디로 검색해보세요" ref="txtSearch" @keyup.enter="search()" style="width:260px;">
-            <button @click="search()">검색</button>
-        </div>
+        <div class="searchBox">
+            <input type="text" placeholder="키워드 또는 빙고아이디로 검색해보세요" class="txtSearchBox" ref="txtSearch" @keyup.enter="search()">
+            <button class="searchButton" @click="search()">검색</button>        </div>
     </div>
 </template>
 <style>
@@ -34,8 +33,22 @@ onMounted(() => {
     gap: 12px;
 }
 .searchBox{
-    width:320px;
-    gap: 8px;
-    justify-content: end;
+    width:340px;
+    position: relative;
+}
+
+.txtSearchBox{
+    width: 100%;
+    padding:8px 32px 8px 12px;
+    border-radius: 20px;
+    border: 1px solid steelblue;
+}
+.searchButton{
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: none;
+    outline: none;
+    border: 0;
 }
 </style>
