@@ -1,6 +1,7 @@
 <script setup>
 import router from '@/router';
 import { ref, onMounted, defineEmits } from 'vue';
+import boxicons from 'boxicons';
 import { RouterLink } from 'vue-router'
 
 const emits = defineEmits('search')
@@ -24,7 +25,7 @@ onMounted(() => {
         </div>
         <div class="searchBox">
             <input type="text" placeholder="키워드 또는 빙고아이디로 검색해보세요" class="txtSearchBox" ref="txtSearch" @keyup.enter="search()">
-            <button class="searchButton" @click="search()">검색</button>
+            <button class="searchButton" @click="search()"><boxicons type='solid' name="search"></boxicons></button>
         </div>
     </div>
 </template>
