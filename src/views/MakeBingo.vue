@@ -1,20 +1,40 @@
 <script setup>
 import { computed, ref } from 'vue';
-  const bingoSize =ref(3)
-  const bingoTitle = ref('')
-  const bingoInputBox =ref()
-  const bingoWidth = computed(() => {
-    return (600 - 4*(bingoSize.value-1))/bingoSize.value
-  })
+const bingoSize =ref(3)
+const bingoTitle = ref('')
+const bingoInputBox =ref()
+const bingoWidth = computed(() => {
+  return (600 - 4*(bingoSize.value-1))/bingoSize.value
+})
 
-  function changeTextHeight(idx) {
-    let sh = bingoInputBox.value[idx].scrollHeight;
-    if(bingoInputBox.value[idx].value == ''|| bingoInputBox.value[idx].value.length < 6){
-      sh = 37;
-    }
-    bingoInputBox.value[idx].style.height = 'auto';
-    bingoInputBox.value[idx].style.height = sh+'px';
+function changeTextHeight(idx) {
+  let sh = bingoInputBox.value[idx].scrollHeight;
+  if(bingoInputBox.value[idx].value == ''|| bingoInputBox.value[idx].value.length < 6){
+    sh = 37;
   }
+  bingoInputBox.value[idx].style.height = 'auto';
+  bingoInputBox.value[idx].style.height = sh+'px';
+}
+
+function isNull(value) {
+  return value === null || value === undefined
+}
+
+function saveCommand() {
+  const btitle = bingoTitle.value
+  const bsize = bingoSize.value
+  const bvalues = bingoInputBox.value.map(e => {
+    return isNull(e.value) ? '' : e.value
+  })
+  return {title: btitle, size:bsize, values:bvalues}
+
+}
+
+function resetCommand() {
+  for(let i=0; i<bingoInputBox.value.length;i++){
+    bingoInputBox.value[i].value = ''
+  }
+}
 
 </script>
 <template>
@@ -46,6 +66,10 @@ import { computed, ref } from 'vue';
       <div class="bingoCell" :style="`width: ${bingoWidth}px; height: ${bingoWidth}px;`" v-for="row in Math.pow(bingoSize,2)" :key="row">
         <textarea :style="`width: ${bingoWidth-3}px;`" ref="bingoInputBox" rows="1" class="bingoInput" @keyup="changeTextHeight(row-1)"></textarea>
       </div>
+    </div>
+    <div>
+      <button @click="saveCommand">저장</button>
+      <button @click="resetCommand">리셋</button>
     </div>
   </div>
 </template>
